@@ -19,7 +19,16 @@ class Post extends Model
         'status'
 ];
 
-    public function author():BelongsTo{
+    public function author():BelongsTo
+    {
         return $this->BelongsTo(User::class, 'authorId');
     }
+
+
+    public function tags(): BelongsToMany
+    {
+        return $this->BelongsToMany(tags::class, 'post_tag', 'postId', 'tagId');
+    }
+
+
 }
